@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - 七三大全</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 强制声明文档语言和字符集 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+         h1 {
+            color: white;
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+  <!-- 引入beta警告弹窗 -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      
+      // 创建iframe加载警告弹窗
+      const betaModal = document.createElement('iframe');
+      betaModal.src = 'mb/warning-modal.html';
+      betaModal.style.position = 'fixed';
+      betaModal.style.top = '0';
+      betaModal.style.left = '0';
+      betaModal.style.width = '100%';
+      betaModal.style.height = '100%';
+      betaModal.style.border = 'none';
+      betaModal.style.zIndex = '9999';
+      
+      // 添加到DOM
+      document.body.appendChild(betaModal);
+      
+      // 监听关闭消息
+      window.addEventListener('message', (e) => {
+        if (e.data === 'closeBetaModal') {
+          betaModal.remove();
+        }
+      });
+    });
+  </script>
+  
+  <!-- 原有内容
+    <div class="page-container">
+        <!-- <header class="site-header">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="\01MainQG\pictures\xh_tm.png" alt="七三大全 Logo" class="logo-image">
+                    <span class="logo-text">七三大全官方网站 - Beta版本</span>
+                </div>
+                            <!-- 添加汉堡菜单按钮 -->
+                <!-- <div class="menu-toggle-container">
+                    <button id="nav-toggle-btn" class="menu-toggle" aria-label="导航菜单">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div> -->
+
+                <!-- 桌面端主菜单
+                <ul class="main-nav-menu" id="main-nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                    <li class="nav-item"><a href="/01MainQG/about.html" class="nav-link">关于我们</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">---</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">---</a></li>
+                </ul> -->
+                <!-- 在body末尾添加侧边栏和遮罩层
+                <div id="side-nav" class="side-nav">
+                    <ul class="mobile-nav-menu">
+                        <li><a href="index.html" class="nav-link">首页</a></li>
+                        <li><a href="/01MainQG/about.html" class="nav-link">关于我们</a></li>
+                    <!-- 添加其他移动菜单项 -->
+                    <!-- </ul>
+                </div>
+
+                <div id="nav-overlay" class="overlay"></div> --> 
+
+           <!--</nav> -->
+    
+        <!-- 主要内容区域 -->
+        <main class="site-content">
+            <section class="hero">
+                <h1 class="centered-heading">欢迎来到我们的网站</h1>
+                <p>test</p>
+                <h2>测试按钮</h2>
+                <!-- 调试开关 -->
+                <div class="debug-control">
+                    <label>
+                        <input type="checkbox" id="debug-toggle" aria-label="启用调试模式">
+                        启用调试模式
+                    </label>
+                </div>
+                <a href="/01MainQG/index.html" class="button-link">群规</a>
+                <a href="/01MainQG/about.html" class="button-link">关于</a>
+                <a href="/error/404.html" class="button-link">404页</a>
+                <a href="/error/403.html" class="button-link">403页</a>
+                <a href="/01MainQG/red-black-list.html" class="button-link">红黑榜</a>
+            </section>
+            <h3>test</h3>
+            <p>test</p>
+        </main>
+
+        <!-- 页脚 -->
+        <footer style="font-size: 10px; color: #888; position: relative; width: 100%; text-align: center; background-color: #f4f4f9; padding: 10px 0; box-sizing: border-box;">
+            made by 七三大全管理团队
+        </footer>
+    </div>
+
+    <!-- 脚本引用 -->
+    <script src="main.js"></script>
+</body>
+</html>

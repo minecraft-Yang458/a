@@ -1,0 +1,121 @@
+<script>
+    // 移动端菜单交互
+    (function() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const menuBtn = document.querySelector('.menu-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const contentContainer = document.querySelector('.content-container');
+        
+        if (!sidebar || !menuBtn || !closeBtn) return;
+        
+        // 打开菜单
+        menuBtn.addEventListener('click', function() {
+            sidebar.style.transform = 'translateX(0)';
+            contentContainer.style.filter = 'blur(2px)';
+        });
+        
+        // 关闭菜单
+        closeBtn.addEventListener('click', function() {
+            sidebar.style.transform = 'translateX(-100%)';
+            contentContainer.style.filter = 'none';
+        });
+        
+        // 点击遮罩层关闭
+        contentContainer.addEventListener('click', function(e) {
+            if (sidebar.style.transform === 'translateX(0px)') {
+                sidebar.style.transform = 'translateX(-100%)';
+                contentContainer.style.filter = 'none';
+            }
+        });
+    })();
+</script>
+<script>
+    // 手势滑动检测
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+    
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+    
+    function handleSwipe() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        if (!sidebar) return;
+        
+        const swipeDistance = touchEndX - touchStartX;
+        // 从左边缘向右滑动（距离>30px）打开菜单
+        if (touchStartX < 50 && swipeDistance > 30) {
+            sidebar.style.transform = 'translateX(0)';
+        }
+        // 向左滑动关闭菜单
+        else if (swipeDistance < -30) {
+            sidebar.style.transform = 'translateX(-100%)';
+        }
+    }
+</script>
+<style>
+    /* 响应式字体设置 */
+    html {
+        font-size: 16px;
+    }
+    
+    @media (max-width: 480px) {
+        html {
+            font-size: 14px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        html {
+            font-size: 18px;
+        }
+    }
+    
+    body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    h1, h2, h3 {
+        font-size: 2rem;
+    }
+</style>
+<body>
+    <div class="mobile-wrapper">
+        <!-- 移动端侧边栏 -->
+        <div class="mobile-sidebar" id="mobile-sidebar">
+            <div class="sidebar-header">
+                <span>导航菜单</span>
+                <button class="close-btn">&times;</button>
+            </div>
+            <ul class="mobile-nav">
+                <li><a href="..\index.html">首页</a></li>
+                <li><a href="..\01MainQG\about.html">关于我们</a></li>
+                <li><a href="..\01MainQG\services.html">服务</a></li>
+                <li><a href="..\01MainQG\contact.html">联系我们</a></li>
+            </ul>
+        </div>
+
+        <!-- 主内容容器 -->
+        <div class="content-container">
+            <!-- 移动端头部 -->
+            <header class="mobile-header">
+                <div class="mobile-logo">
+                    <img src="\01MainQG\pictures\xh_tm.png" alt="Logo" style="height: 30px;">
+                    <span>七三大全</span>
+                </div>
+                <button class="menu-btn">☰</button>
+            </header>
+
+            <!-- 移动端内容 -->
+            <main class="mobile-content">
+                <p>欢迎访问七三大全移动端页面</p>
+            </main>
+        </div>
+    </div>
+</body>
