@@ -1,49 +1,4 @@
-<!--    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>关于</title>
-        <link rel="stylesheet" href="/styles.css">
-        <script src="/main.js" defer></script>
-    </head>
-    <body>
-   
-    <div class="container">
-        <img src="pictures/xh_tm.png" alt="校徽" class="logo" style="width: 40px;">
-        <h2>海宁市丁桥中学七（3）班</h2>
-    </div>
-    <h1 style="margin-top: 50px;">关于我们</h1>
-    <p>None...</p>
-    <h2>联系方式</h2>
-    <p>E-mail:18457376055@163.com</p>
-    <p>微信群：None</p>
-    <p>QQ分群：1048229673</p>
-    <h1>版权声明</h1>
-    <p>本群规内容遵循<a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议（CC BY
-        4.0）</a>，您可自由：</p>
-    <ul>
-        <li>共享 - 复制、转载本群规内容</li>
-        <li>修改 - 改编、二次创作</li>
-    </ul>
-    <p>需满足以下条件：</p>
-    <ul>
-        <li>注明原始出处</li>
-        <li>不得用于商业用途</li>
-        <li>若修改内容须以相同协议共享</li>
-    </ul>
-    <h2>制作人员</h2>
-    <p>Yang</p>
-    <p>qianwen</p>
-    <a href=".../index.html">
-        <button class="button-link">返回首页</button>
-    </a>
-    <footer style="font-size: 10px; color: #888; position: relative; width: 100%; text-align: center; background-color: #f4f4f9; padding: 20px 0;">
-        made by 七三大全管理团队
-    </footer>
-    </body>
-    </html>-->
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -52,94 +7,13 @@
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="/main.js" defer></script>
-    <script src="/load-navbar.js" defer></script>
-    <script>
-// 统一导航栏脚本
-document.addEventListener('DOMContentLoaded', function() {
-    // 导航栏HTML
-    const navbarHTML = `
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo-container">
-                <img src="/01MainQG/pictures/xh_tm.png" alt="七三大全 Logo" class="logo-image">
-                <span class="logo-text">七三大全官方网站</span>
-            </div>
-            
-            <ul class="nav-links">
-                <li><a href="/index.html">首页</a></li>
-                <li><a href="/01MainQG/about.html">关于我们</a></li>
-                <li><a href="/01MainQG/red-black-list.html">红黑榜</a></li>
-                <li><a href="/01MainQG/page/zw.html">群规</a></li>
-            </ul>
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-    `;
-    
-    // 插入导航栏
-    document.body.insertAdjacentHTML('afterbegin', navbarHTML);
-    
-    // 导航栏功能初始化
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navbar = document.getElementById('navbar');
-    
-    // 移动端导航切换
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-    }
-    
-    // 点击导航链接关闭移动菜单
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        });
-    });
-    
-    // 滚动时导航栏效果
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 20) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
-    // 点击页面其他区域关闭移动菜单
-    document.addEventListener('click', function(e) {
-        if (navLinks && menuToggle) {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('active');
-            }
-        }
-    });
-    
-    // 设置当前活动状态
-    const currentPath = window.location.pathname;
-    const navItems = document.querySelectorAll('.nav-links a');
-    
-    navItems.forEach(item => {
-        const itemPath = new URL(item.href, window.location.origin).pathname;
-        if (currentPath === itemPath) {
-            item.classList.add('active');
-        }
-        
-        // 特殊处理 index.html
-        if (currentPath.endsWith('/') && itemPath.endsWith('/index.html')) {
-            item.classList.add('active');
-        }
-    });
-});
-</script>
+    <link rel="stylesheet" href="/navbar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="/navbar.js" defer></script>
 </head>
 <body>
 <!--#include file="navbar.html" -->
+<div id="navbar-container"></div> 
 <div class="page-container">
     <div style="text-align: center; margin-bottom: 30px;">
         <img src="pictures/xh_tm.png" alt="校徽" style="width: 80px; margin-bottom: 15px;">
@@ -222,4 +96,5 @@ document.addEventListener('DOMContentLoaded', function() {
     <p>邮箱: 18457376055@163.com | QQ分群: 1048229673</p>
 </footer>
 </body>
+
 </html>
