@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('nav-rule') && (path === '/01MainQG/page/zw' || path === '/01MainQG/page/zw.html')) {
         document.getElementById('nav-rule').classList.add('active');
     }
-     // ...事件绑定（如下）...
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    // 绑定点击事件
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-    }
+    //  // ...事件绑定（如下）...
+    // const menuToggle = document.querySelector('.menu-toggle');
+    // const navLinks = document.querySelector('.nav-links');
+    // // 绑定点击事件
+    // if (menuToggle) {
+    //     menuToggle.addEventListener('click', function() {
+    //         navLinks.classList.toggle('active');
+    //     });
+    // }
 });
