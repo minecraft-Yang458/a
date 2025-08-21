@@ -63,23 +63,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 穷举法自动高亮当前页导航项
+    // 穷举法自动高亮当前页导航项，兼容.html和无后缀
     const path = window.location.pathname;
     // 首页（包括 / 或 /index.html）
-    if (path === '/' || path === '/index.html') {
+    if (document.getElementById('nav-home') && (path === '/' || path === '/index.html')) {
         document.getElementById('nav-home').classList.add('active');
     }
     // 关于我们
-    else if (path === '/01MainQG/about.html') {
+    if (document.getElementById('nav-about') && (path === '/01MainQG/about' || path === '/01MainQG/about.html')) {
         document.getElementById('nav-about').classList.add('active');
     }
     // 红黑榜
-    else if (path === '/01MainQG/red-black-list.html') {
+    if (document.getElementById('nav-redblack') && (path === '/01MainQG/red-black-list' || path === '/01MainQG/red-black-list.html')) {
         document.getElementById('nav-redblack').classList.add('active');
     }
     // 群规
-    else if (path === '/01MainQG/page/zw.html') {
+    if (document.getElementById('nav-rule') && (path === '/01MainQG/page/zw' || path === '/01MainQG/page/zw.html')) {
         document.getElementById('nav-rule').classList.add('active');
     }
-    // 你可以继续添加其他页面的穷举分支
 });
