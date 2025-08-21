@@ -578,68 +578,8 @@
     <p>© 2023 七三大全管理团队 | 当前版本: beta 1.2.0</p>
     <p>邮箱: 18457376055@163.com | QQ分群: 1048229673</p>
 </footer>
- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-            const navbar = document.getElementById('navbar');
-            
-            // 移动端导航切换
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
-            
-            // 点击导航链接关闭移动菜单
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                    }
-                });
-            });
-            
-            // 滚动时导航栏效果
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 20) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-            
-            // 点击页面其他区域关闭移动菜单
-            document.addEventListener('click', function(e) {
-                if (navLinks && menuToggle) {
-                    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                        navLinks.classList.remove('active');
-                    }
-                }
-            });
-            
-            // 设置当前活动状态
-            const currentPath = window.location.pathname;
-            const navItems = document.querySelectorAll('.nav-links a');
-            
-            navItems.forEach(item => {
-                const itemPath = new URL(item.href, window.location.origin).pathname;
-                // 移除所有活动状态
-                item.classList.remove('active');
-                
-                // 检查路径是否匹配
-                if (currentPath === itemPath) {
-                    item.classList.add('active');
-                }
-                
-                // 特殊处理 index.html
-                if (currentPath.endsWith('/') && itemPath.endsWith('/index.html')) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
+
 
