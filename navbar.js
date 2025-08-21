@@ -1,5 +1,8 @@
-// 导航栏自动插入及穷举高亮脚本
+// 导航栏自动插入及高亮脚本（防止重复插入/变量冲突）
 document.addEventListener('DOMContentLoaded', function() {
+    // 若已存在导航栏，则不再插入，防止变量重复声明
+    if (document.getElementById('navbar')) return;
+
     // 导航栏HTML
     const navbarHTML = `
     <nav class="navbar" id="navbar">
@@ -63,31 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 穷举法自动高亮当前页导航项，兼容.html和无后缀
+    // 自动高亮当前页导航项，兼容.html和无后缀
     const path = window.location.pathname;
-    // 首页（包括 / 或 /index.html）
     if (document.getElementById('nav-home') && (path === '/' || path === '/index.html')) {
         document.getElementById('nav-home').classList.add('active');
     }
-    // 关于我们
     if (document.getElementById('nav-about') && (path === '/01MainQG/about' || path === '/01MainQG/about.html')) {
         document.getElementById('nav-about').classList.add('active');
     }
-    // 红黑榜
     if (document.getElementById('nav-redblack') && (path === '/01MainQG/red-black-list' || path === '/01MainQG/red-black-list.html')) {
         document.getElementById('nav-redblack').classList.add('active');
     }
-    // 群规
     if (document.getElementById('nav-rule') && (path === '/01MainQG/page/zw' || path === '/01MainQG/page/zw.html')) {
         document.getElementById('nav-rule').classList.add('active');
     }
-    //  // ...事件绑定（如下）...
-    // const menuToggle = document.querySelector('.menu-toggle');
-    // const navLinks = document.querySelector('.nav-links');
-    // // 绑定点击事件
-    // if (menuToggle) {
-    //     menuToggle.addEventListener('click', function() {
-    //         navLinks.classList.toggle('active');
-    //     });
-    // }
 });
