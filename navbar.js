@@ -1,4 +1,4 @@
-// 导航栏自动插入及高亮脚本
+// 导航栏自动插入及穷举高亮脚本
 document.addEventListener('DOMContentLoaded', function() {
     // 导航栏HTML
     const navbarHTML = `
@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="logo-text">七三大全官方网站</span>
             </div>
             <ul class="nav-links">
-                <li><a href="/index.html">首页</a></li>
-                <li><a href="/01MainQG/about.html">关于我们</a></li>
-                <li><a href="/01MainQG/red-black-list.html">红黑榜</a></li>
-                <li><a href="/01MainQG/page/zw.html">群规</a></li>
+                <li><a id="nav-home" href="/index.html">首页</a></li>
+                <li><a id="nav-about" href="/01MainQG/about.html">关于我们</a></li>
+                <li><a id="nav-redblack" href="/01MainQG/red-black-list.html">红黑榜</a></li>
+                <li><a id="nav-rule" href="/01MainQG/page/zw.html">群规</a></li>
             </ul>
             <button class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -63,16 +63,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 自动高亮当前页导航项（路径忽略大小写和结尾斜杠）
-    const currentPath = window.location.pathname.replace(/\/+$/, '').toLowerCase();
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        const linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '').toLowerCase();
-        if (currentPath === linkPath) {
-            link.classList.add('active');
-        }
-        // 特殊处理首页（根目录和index.html都高亮首页按钮）
-        if ((currentPath === '/' || currentPath === '/index.html') && linkPath.endsWith('/index.html')) {
-            link.classList.add('active');
-        }
-    });
+    // 穷举法自动高亮当前页导航项
+    const path = window.location.pathname;
+    // 首页（包括 / 或 /index.html）
+    if (path === '/' || path === '/index.html') {
+        document.getElementById('nav-home').classList.add('active');
+    }
+    // 关于我们
+    else if (path === '/01MainQG/about.html') {
+        document.getElementById('nav-about').classList.add('active');
+    }
+    // 红黑榜
+    else if (path === '/01MainQG/red-black-list.html') {
+        document.getElementById('nav-redblack').classList.add('active');
+    }
+    // 群规
+    else if (path === '/01MainQG/page/zw.html') {
+        document.getElementById('nav-rule').classList.add('active');
+    }
+    // 你可以继续添加其他页面的穷举分支
 });
