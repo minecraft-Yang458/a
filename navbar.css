@@ -1,5 +1,15 @@
 /* ============================
-   通用导航栏样式
+   全局重置与基础字体
+============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+/* ============================
+   固定导航栏样式
 ============================ */
 .navbar {
     position: fixed;
@@ -13,7 +23,6 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     padding: 10px 20px;
     transition: all 0.3s ease;
-    font-family: 'Microsoft YaHei', sans-serif;
 }
 
 .navbar.scrolled {
@@ -39,21 +48,24 @@
 .logo-image {
     height: 50px;
     border-radius: 50%;
+    border: 2px solid #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
 .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    color: #333;
+    color: #0066cc;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* ============================
    导航链接样式
 ============================ */
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 20px;
+    list-style: none;
+    gap: 15px;
     padding: 0;
     margin: 0;
 }
@@ -63,18 +75,23 @@
 }
 
 .nav-links a {
-    color: #333;
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 12px 10px;
-    border-radius: 5px;
-    transition: background 0.2s, color 0.2s;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
-.nav-links a.active,
 .nav-links a:hover {
-    background: #0066cc;
-    color: #fff;
+    background-color: rgba(0, 123, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-links a.active {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
 }
 
 /* ============================
@@ -84,46 +101,44 @@
     display: none;
     background: none;
     border: none;
-    cursor: pointer;
     font-size: 1.8rem;
-    color: #333;
+    color: #007bff;
+    cursor: pointer;
+    padding: 5px;
 }
 
 /* ============================
    移动端样式
 ============================ */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .nav-links {
+        display: none;
         position: absolute;
-        top: 60px;
-        right: 20px;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
         flex-direction: column;
-        background: #fff;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        padding: 15px 10px;
-        display: none; /* 默认隐藏菜单 */
+        padding: 20px;
+        text-align: center;
+        z-index: 100;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-radius: 0 0 10px 10px;
     }
+
     .nav-links.active {
-        display: flex; /* 点击汉堡按钮后显示 */
+        display: flex;
     }
-    .nav-links li {
-        margin: 10px 0;
-    }
+
     .menu-toggle {
         display: block;
     }
 }
 
-/* ============================
-   桌面端样式
-============================ */
-@media (min-width: 769px) {
-    .nav-links {
-        display: flex !important;
-        gap: 20px;
-    }
-    .menu-toggle {
-        display: none;
+/* 更小屏幕调整 */
+@media (max-width: 600px) {
+    .nav-links a {
+        padding: 12px;
+        font-size: 1.1rem;
     }
 }
