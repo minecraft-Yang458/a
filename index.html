@@ -10,10 +10,6 @@
      <link rel="stylesheet" href="/navbar.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="/navbar.js" defer></script>
-    <!-- 1) 先加载配置 -->
-    <script src="/config.js"></script>
-    <!-- 2) 再加载 footer 脚本（会自动插入或填充页脚） -->
-    <script src="/footer.js" defer></script>
     <style>
         * {
             margin: 0;
@@ -504,7 +500,9 @@
     </div>
     
     <!-- 页脚 -->
-    <footer id="site-footer"></footer>
+    <footer></footer>
+    <script src="/config.js"></script>
+    <script src="/footer.js" defer></script>
 
     
     <script>
@@ -559,6 +557,7 @@
 </body>
 
 </html>
+
 
 
 
